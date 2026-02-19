@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+env/
+.venv/
+.env
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Project Specific Secrets
+config/ServiceAccountKey.json
+
+# IDEs
+.vscode/
+.idea/
+
+# OS Specific
+.DS_Store
+Thumbs.db

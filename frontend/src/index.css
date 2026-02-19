@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme for landing CPIC section */
+    --background: 210 20% 98%;
+    --foreground: 210 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 30% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 30% 10%;
+    --primary: 174 100% 40%;
+    --primary-foreground: 210 40% 4%;
+    --secondary: 172 40% 90%;
+    --secondary-foreground: 210 30% 10%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 210 10% 45%;
+    --accent: 174 80% 35%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 174 100% 40%;
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 30% 8%;
+    --sidebar-foreground: 174 30% 85%;
+    --sidebar-primary: 174 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 174 30% 15%;
+    --sidebar-accent-foreground: 174 30% 85%;
+    --sidebar-border: 210 20% 18%;
+    --sidebar-ring: 174 100% 40%;
+
+    /* PharmaGuard custom tokens */
+    --pg-dark: 210 30% 6%;
+    --pg-dark-card: 210 25% 10%;
+    --pg-dark-surface: 210 20% 14%;
+    --pg-cyan: 174 100% 40%;
+    --pg-cyan-glow: 174 100% 50%;
+    --pg-teal: 170 80% 30%;
+    --pg-emerald: 155 70% 25%;
+    --pg-dark-green: 145 80% 18%;
+    --pg-safe: 142 70% 45%;
+    --pg-adjust: 45 90% 55%;
+    --pg-toxic: 0 80% 55%;
+    --pg-ineffective: 280 60% 55%;
+
+    font-family: 'Inter', sans-serif;
+  }
+
+  .dark {
+    --background: 210 30% 6%;
+    --foreground: 174 15% 90%;
+    --card: 210 25% 10%;
+    --card-foreground: 174 15% 90%;
+    --popover: 210 25% 10%;
+    --popover-foreground: 174 15% 90%;
+    --primary: 174 100% 40%;
+    --primary-foreground: 210 40% 4%;
+    --secondary: 210 20% 14%;
+    --secondary-foreground: 174 15% 85%;
+    --muted: 210 20% 14%;
+    --muted-foreground: 210 10% 55%;
+    --accent: 174 80% 35%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 18%;
+    --input: 210 20% 18%;
+    --ring: 174 100% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(174 100% 50%), hsl(155 70% 35%));
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px hsl(174 100% 40% / 0.3), 0 0 60px hsl(174 100% 40% / 0.1);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 20px hsl(174 100% 50% / 0.5), 0 0 40px hsl(174 100% 50% / 0.2);
+  }
+
+  .bg-dark-gradient {
+    background: linear-gradient(180deg, hsl(210 30% 4%) 0%, hsl(210 30% 8%) 100%);
+  }
+
+  .border-glow {
+    border: 1px solid hsl(174 100% 40% / 0.3);
+  }
+
+  .pulse-danger {
+    animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    border-color: hsl(0 80% 55% / 0.8);
+    box-shadow: 0 0 15px hsl(0 80% 55% / 0.4);
+  }
+  50% {
+    border-color: hsl(0 80% 55% / 0.3);
+    box-shadow: 0 0 5px hsl(0 80% 55% / 0.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
