@@ -21,7 +21,18 @@ interface DrugResult {
     primary_gene: string;
     diplotype: string;
     phenotype: string;
-    detected_variants: Array<{ rsid: string }>;
+    detected_variants: Array<{ rsid: string; genotype: string }>;
+  };
+  clinical_recommendation: {
+    text: string;
+  };
+  llm_generated_explanation: {
+    summary: string;
+  };
+  quality_metrics: {
+    vcf_parsing_success: boolean;
+    variant_count: number;
+    model_available: boolean;
   };
 }
 
@@ -157,20 +168,31 @@ export default function AnalysisResult() {
                       {risk}
                     </span>
                   </div>
+
+                  {/* LLM Explanation */}
+                  <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10">
+                    <p className="text-white/80 text-sm italic">
+                      "{result.llm_generated_explanation?.summary || 'No explanation available.'}"
+                    </p>
+                  </div>
+
+                  {/* Clinical Recommendation */}
+                  <div className="mb-4">
+                    <h4 className="text-primary font-display text-sm font-bold mb-1">Recommendation</h4>
+                    <p className="text-white/70 text-sm">
+                      {result.clinical_recommendation?.text || "Consult a physician."}
+                    </p>
+                  </div>
+
                   <p className="text-white/60 text-sm leading-relaxed mb-4">
                     Based on pharmacogenomic analysis, the genetic variants detected in {pharmacogenomic_profile.primary_gene}
                     suggest a {risk.toLowerCase()} classification for {drug.toLowerCase()}.
-                    {risk === "Toxic" && (
-                      <span className="text-pg-toxic font-semibold"> Consider alternative medications or significant dose reduction.</span>
-                    )}
-                    {risk === "Adjust Dosage" && (
-                      <span className="text-pg-adjust font-semibold"> Dosage adjustment recommended based on metabolizer phenotype.</span>
-                    )}
                   </p>
                   <div className="text-white/40 text-xs space-y-1">
                     <p><strong className="text-white/60">Primary Gene:</strong> {pharmacogenomic_profile.primary_gene}</p>
                     <p><strong className="text-white/60">Diplotype:</strong> {pharmacogenomic_profile.diplotype}</p>
                     <p><strong className="text-white/60">Phenotype:</strong> {pharmacogenomic_profile.phenotype}</p>
+                    <p><strong className="text-white/60">Variants Found:</strong> {pharmacogenomic_profile.detected_variants.length}</p>
                   </div>
                 </div>
 

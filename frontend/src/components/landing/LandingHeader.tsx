@@ -6,9 +6,8 @@ export default function LandingHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-pg-dark/80 backdrop-blur-md border-b border-border">
       <Link to="/" className="flex items-center gap-3">
         {/* Logo placeholder */}
-        <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center font-display font-bold text-primary-foreground text-sm">
-          PG
-        </div>
+        {/* Logo */}
+        <img src="/logo.ico.ico" alt="PharmaGuard Logo" className="w-9 h-9 rounded-lg object-contain" />
         <span className="font-display font-bold text-lg text-gradient-cyan">PharmaGuard</span>
       </Link>
 

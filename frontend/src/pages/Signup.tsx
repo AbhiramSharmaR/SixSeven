@@ -24,6 +24,7 @@ export default function Signup() {
         <DnaCanvas />
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="text-center">
+            <img src="/logo.ico.ico" alt="PharmaGuard Logo" className="w-20 h-20 mx-auto mb-6 rounded-xl object-contain" />
             <h1 className="font-display text-5xl font-bold text-white glow-text-cyan mb-4">PharmaGuard</h1>
             <p className="text-white/60 text-lg">Join the Precision Medicine Revolution</p>
           </div>

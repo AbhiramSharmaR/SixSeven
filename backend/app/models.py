@@ -32,6 +32,7 @@ class RiskAssessment(BaseModel):
 
 class Variant(BaseModel):
     rsid: str
+    genotype: Optional[str] = None
 
 class PharmacogenomicProfile(BaseModel):
     primary_gene: str
@@ -39,10 +40,24 @@ class PharmacogenomicProfile(BaseModel):
     phenotype: str
     detected_variants: List[Variant] = []
 
+class ClinicalRecommendation(BaseModel):
+    text: str
+
+class LLMExplanation(BaseModel):
+    summary: str
+
+class QualityMetrics(BaseModel):
+    vcf_parsing_success: bool
+    variant_count: int
+    model_available: bool
+
 class DrugResult(BaseModel):
     drug: str
     risk_assessment: RiskAssessment
     pharmacogenomic_profile: PharmacogenomicProfile
+    clinical_recommendation: Optional[ClinicalRecommendation] = None
+    llm_generated_explanation: Optional[LLMExplanation] = None
+    quality_metrics: Optional[QualityMetrics] = None
 
 class AnalysisResultResponse(BaseModel):
     patient_id: str
