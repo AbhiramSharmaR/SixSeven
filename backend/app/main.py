@@ -39,4 +39,8 @@ async def root():
 
 frontend_path = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
 
-app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+app.mount("/assets", StaticFiles(directory=frontend_path / "assets"), name="assets")
+
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str):
+    return FileResponse(frontend_path / "index.html")

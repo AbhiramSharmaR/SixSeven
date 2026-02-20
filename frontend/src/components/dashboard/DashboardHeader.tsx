@@ -13,7 +13,17 @@ import {
 export default function DashboardHeader() {
   const location = useLocation();
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("pg_user") || '{"username":"User"}');
+  let user: any = { username: "User" };
+  try {
+    const storedUser = localStorage.getItem("pg_user");
+    if (storedUser && storedUser !== "undefined") {
+      user = JSON.parse(storedUser);
+    }
+  } catch (error) {
+    console.error("Failed to parse user data:", error);
+    // Fallback is already set
+  }
+
   const username = user.username || user.fullName || "User";
 
   return (

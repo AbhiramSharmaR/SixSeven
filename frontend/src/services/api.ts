@@ -5,12 +5,12 @@ import axios from "axios";
  *   -> calls http://localhost:8000
  *
  * Production (Render):
- *   -> calls same domain (""), since FastAPI serves frontend
+ *   -> calls deployed backend
  */
 const API_BASE_URL =
     import.meta.env.MODE === "development"
         ? "http://localhost:8000"
-        : "";
+        : "https://sixseven-wcz0.onrender.com"; // <-- your backend URL
 
 const api = axios.create({
     baseURL: API_BASE_URL,
@@ -45,22 +45,14 @@ api.interceptors.response.use(
 );
 
 export const auth = {
-    login: (data: any) => api.post("/api/login", data),
-    signup: (data: any) => api.post("/api/signup", data),
+    login: (data: any) => api.post("/auth/login", data),
+    signup: (data: any) => api.post("/auth/register", data),
 };
 
 export const analysis = {
-    analyze: (formData: FormData) =>
-        api.post("/api/analyze", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        }),
+    analyze: (data: any) =>
+        api.post("/symptomchecker", data),
     getHistory: () => api.get("/api/results"),
-    getResult: (id: string) => api.get(`/api/results/${id}`),
 };
-
-export const predict = (data: any) =>
-    api.post("/api/predict", data);
 
 export default api;

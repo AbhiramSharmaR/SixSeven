@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import VcfUpload from "@/components/analyse/VcfUpload";
@@ -13,6 +13,13 @@ export default function Dashboard() {
   const [selectedDrugs, setSelectedDrugs] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("pg_token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleSubmit = async () => {
     if (!selectedFile || selectedDrugs.length === 0) return;
