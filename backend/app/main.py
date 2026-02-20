@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import auth_routes, analysis_routes, results_routes
 from app.config import settings
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 
 app = FastAPI(
     title="PharmaGuard Backend",
@@ -18,8 +20,7 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],  # restrict later
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -32,3 +33,8 @@ app.include_router(results_routes.router)
 @app.get("/")
 async def root():
     return {"message": "PharmaGuard API is running"}
+
+
+frontend_path = Path(__file__).resolve().parent.parent / "frontend" / "dist"
+
+app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
