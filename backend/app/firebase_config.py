@@ -28,5 +28,9 @@ def initialize_firebase():
                 print(f"Failed to initialize Firebase: {e}") 
 
 def get_firestore_client():
-    initialize_firebase()
-    return firestore.client()
+    try:
+        initialize_firebase()
+        return firestore.client()
+    except Exception as e:
+        print(f"Error initializing Firestore client: {e}")
+        return None
