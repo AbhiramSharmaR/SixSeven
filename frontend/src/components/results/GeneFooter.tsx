@@ -5,7 +5,10 @@ interface GeneFooterProps {
   onGeneClick?: (gene: string) => void;
 }
 
-export default function GeneFooter({ highlightedGenes = [], onGeneClick }: GeneFooterProps) {
+export default function GeneFooter({
+  highlightedGenes = [],
+  onGeneClick,
+}: GeneFooterProps) {
   return (
     <div className="flex justify-center gap-3 py-4 px-6 bg-pg-dark-card border-t border-border">
       {GENES.map((gene) => {
@@ -14,11 +17,10 @@ export default function GeneFooter({ highlightedGenes = [], onGeneClick }: GeneF
           <button
             key={gene}
             onClick={() => onGeneClick?.(gene)}
-            className={`px-4 py-2 rounded-lg font-display text-xs font-bold transition-all border ${
-              isHighlighted
+            className={`px-4 py-2 rounded-lg font-display text-xs font-bold transition-all border ${isHighlighted
                 ? "bg-primary text-primary-foreground border-primary glow-cyan animate-scale-in"
                 : "bg-pg-dark border-border text-white/40 hover:text-white/60"
-            }`}
+              }`}
           >
             {gene}
           </button>
