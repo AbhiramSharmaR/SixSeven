@@ -28,29 +28,19 @@ export default function Dashboard() {
     try {
       const formData = new FormData();
       formData.append("vcfFile", selectedFile);
-      // Backend expects comma-separated string or multiple values?
-      // implementation_plan says: "selectedDrugs (string or JSON list EXACTLY as backend expects)"
-      // Backend analysis_routes.py:
-      // if "," in selectedDrugs: drugs_list = ...
-      // else: drugs_list = [selectedDrugs]
-      // So comma separated string works.
       formData.append("selectedDrugs", selectedDrugs.join(","));
 
-      await analysis.analyze(formData);
+      const response = await analysis.analyze(formData);
+      const resultData = response.data;
 
-      // Fetch history to get the ID of the new analysis (since analyze response doesn't have UUID)
-      const historyResponse = await analysis.getHistory();
-      if (historyResponse.data && historyResponse.data.length > 0) {
-        // Assuming latest is first
-        const latestId = historyResponse.data[0].id;
-        navigate(`/analysis/${latestId}`);
-      } else {
-        // Fallback if history fetch fails (unlikely)
-        alert("Analysis complete but could not retrieve ID.");
-      }
+      // Store result in sessionStorage so AnalysisResult page can load it instantly
+      const resultId = resultData.patient_id;
+      sessionStorage.setItem(`analysis_${resultId}`, JSON.stringify(resultData));
+
+      navigate(`/analysis/${resultId}`);
     } catch (error: any) {
       console.error("Analysis failed", error);
-      alert(error.response?.data?.detail || "Analysis failed");
+      alert(error.response?.data?.detail || "Analysis failed. Please check your file and try again.");
     } finally {
       setLoading(false);
     }

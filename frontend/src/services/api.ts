@@ -55,6 +55,7 @@ export const analysis = {
             headers: { "Content-Type": "multipart/form-data" },
         }),
     getHistory: () => api.get("/api/results"),
+    getResult: (id: string) => api.get(`/api/results/${id}`),
 };
 
 export default api;

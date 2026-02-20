@@ -58,6 +58,18 @@ export default function AnalysisResult() {
   useEffect(() => {
     if (!id) return;
     const fetchResult = async () => {
+      // First, check sessionStorage (set immediately after analysis)
+      const cached = sessionStorage.getItem(`analysis_${id}`);
+      if (cached) {
+        try {
+          setData(JSON.parse(cached));
+          setLoading(false);
+          return;
+        } catch (_) {
+          // Invalid cache, fall through to API
+        }
+      }
+      // Fallback: fetch from API (handles direct URL access or page refresh)
       try {
         const response = await analysis.getResult(id);
         setData(response.data);
