@@ -45,13 +45,15 @@ api.interceptors.response.use(
 );
 
 export const auth = {
-    login: (data: any) => api.post("/auth/login", data),
-    signup: (data: any) => api.post("/auth/register", data),
+    login: (data: any) => api.post("/api/login", data),
+    signup: (data: any) => api.post("/api/signup", data),
 };
 
 export const analysis = {
     analyze: (data: any) =>
-        api.post("/symptomchecker", data),
+        api.post("/api/analyze", data, {
+            headers: { "Content-Type": "multipart/form-data" },
+        }),
     getHistory: () => api.get("/api/results"),
 };
 

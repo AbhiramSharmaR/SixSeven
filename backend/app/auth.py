@@ -43,6 +43,7 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
 
 def authenticate_user(email: str, password: str):
     # Firestore Query
+    print(f"DEBUG: Attempting login for email: {email}") # DEBUG
     users_ref = db.collection("users")
     query = users_ref.where("email", "==", email).limit(1).stream()
     
@@ -52,8 +53,13 @@ def authenticate_user(email: str, password: str):
         break
         
     if not user_doc:
+        print("DEBUG: User not found in Firestore") # DEBUG
         return False
+        
+    print(f"DEBUG: User found. Verifying password...") # DEBUG
     if not verify_password(password, user_doc["hashed_password"]):
+        print("DEBUG: Password verification failed") # DEBUG
         return False
     
+    print("DEBUG: Authentication successful") # DEBUG
     return user_doc
