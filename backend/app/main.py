@@ -4,7 +4,8 @@ from app.routes import auth_routes, analysis_routes, results_routes
 from app.config import settings
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
-
+import os
+from fastapi.responses import FileResponse
 app = FastAPI(
     title="PharmaGuard Backend",
     description="Backend API for PharmaGuard Pharmacogenomics Platform",
@@ -20,7 +21,8 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # restrict later
+    allow_origins=["*"],  
+    allow_credentials=True,# restrict later
     allow_methods=["*"],
     allow_headers=["*"],
 )
