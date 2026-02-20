@@ -37,6 +37,6 @@ async def root():
     return {"message": "PharmaGuard API is running"}
 
 
-frontend_path = Path(__file__).resolve().parent.parent / "frontend" / "dist"
+frontend_path = Path(__file__).resolve().parent.parent.parent / "frontend" / "dist"
 
 app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
