@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # SixSeven
 =======
 # Pharmacogenomic VCF Parser
@@ -152,8 +152,3 @@ Try parsing an example:
 ```bash
 python -m pgx_vcf_parser.cli examples/sample_minimal.vcf -f pretty
 ```
-
-## License
-
-MIT License
->>>>>>> 0561dc6b9306f1debf342a8f09c649cde5e2a824
