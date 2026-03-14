@@ -13,7 +13,7 @@ export default function HeroSection() {
           className="font-display text-4xl md:text-6xl font-bold text-white glow-text-cyan mb-6"
         >
           Adverse Drug Reactions Kill Over{" "}
-          <span className="text-gradient-cyan">100,000</span> Americans Annually
+          <span className="text-gradient-cyan">100,000</span> People Annually
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
