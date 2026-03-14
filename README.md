@@ -22,7 +22,7 @@
 
 ## 📖 Overview
 
-Adverse drug reactions (ADRs) kill over **100,000 Americans annually** — and many of these deaths are preventable. The root cause is often ignored: patients metabolize drugs differently based on their genetics. Two patients receiving the same dose of codeine can have wildly different outcomes based on their `CYP2D6` genotype.
+Adverse drug reactions (ADRs) kill over **100,000 people annually** — and many of these deaths are preventable. The root cause is often ignored: patients metabolize drugs differently based on their genetics. Two patients receiving the same dose of codeine can have wildly different outcomes based on their `CYP2D6` genotype.
 
 **PharmaGuard** is a full-stack AI web application that bridges genomics and clinical decision-making. It enables clinicians and researchers to:
 
