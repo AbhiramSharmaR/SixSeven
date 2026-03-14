@@ -1,6 +1,6 @@
 
 # SixSeven
-=======
+
 # Pharmacogenomic VCF Parser
 
 A Python library for parsing VCF v4.2 files and extracting pharmacogenomic variant information for clinical decision support and machine learning applications.
