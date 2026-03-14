@@ -2,8 +2,7 @@
 
 > **AI-powered precision medicine: analyze patient genetic data to predict personalized drug risks and deliver clinically actionable recommendations.**
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render)](https://your-live-url.onrender.com)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+
 [![Python](https://img.shields.io/badge/Python-3.11+-yellow?style=for-the-badge&logo=python)](https://python.org)
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![RIFT 2026](https://img.shields.io/badge/RIFT%202026-Hackathon-purple?style=for-the-badge)](#)
@@ -14,9 +13,8 @@
 
 | Resource | Link |
 |---|---|
-| 🌐 Live Application | [pharmaguard.onrender.com](https://your-live-url.onrender.com) |
 | 📹 LinkedIn Demo Video | [Watch on LinkedIn](https://linkedin.com/your-demo-video) |
-| 📁 GitHub Repository | [github.com/your-org/PharmaGuard](https://github.com/your-org/PharmaGuard) |
+| 📁 GitHub Repository | [github.com/your-org/PharmaGuard](https://github.com/AbhiramSharmaR/SixSeven) |
 
 > **Built for RIFT 2026 Hackathon — Pharmacogenomics / Explainable AI Track**
 
